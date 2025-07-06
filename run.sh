@@ -1,14 +1,11 @@
 #!/bin/bash
 
-if [ -f .env ]; then
-  export $(cat .env | xargs)
-else
-  echo ".env file not found!"
+if [ ! -f environment.json ]; then
+  echo "❌ environment.json not found!"
   exit 1
 fi
 
 npx newman run collection.json \
-  --env-var "github_token=$github_token" \
-  --env-var "base_url=$base_url" \
+  --environment environment.json \
   --reporters cli,html \
   --reporter-html-export results.html
