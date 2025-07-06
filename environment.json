@@ -1,0 +1,21 @@
+{
+	"id": "e74609f9-1cc8-42dd-a9b1-6174b913024c",
+	"name": "Dev",
+	"values": [
+		{
+			"key": "github_token",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "base_url",
+			"value": "https://api.github.com",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-07-06T16:27:45.147Z",
+	"_postman_exported_using": "Postman/11.52.6"
+}
