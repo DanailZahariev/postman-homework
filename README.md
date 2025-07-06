@@ -62,6 +62,36 @@ Make sure it contains at least the following variables:
 
 ---
 
+---
+
+## 🧩 Alternative: Use `collection.json` Directly
+
+If you don't want to use `.env` or `environment.json`, you can manually insert your GitHub token into `collection.json`:
+
+1. Open `collection.json`
+2. Locate this section:
+   ```json
+   {
+     "key": "github_token",
+     "value": "",
+     "type": "secret",
+     "enabled": true
+   }
+   ```
+3. Replace the value with your personal token:
+   ```json
+   {
+     "key": "github_token",
+     "value": "ghp_xxxxxxxxxxxxxxxxxxxx",
+     "type": "secret",
+     "enabled": true
+   }
+   ```
+
+> ⚠️ **Do not commit this file after editing it!** GitHub will reject pushes that contain tokens.
+
+---
+
 ## 🧪 Run the Tests
 
 ```bash
