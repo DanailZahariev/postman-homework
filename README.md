@@ -36,7 +36,8 @@ cd postman-homework
 ### 2. Install Dependencies
 
 ```bash
-npm install
+npm install newman 
+npm install newman-reporter-html
 ```
 
 This installs `newman` and the `newman-reporter-html`.
