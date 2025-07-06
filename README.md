@@ -30,7 +30,7 @@ It covers end-to-end user stories including:
 
 ```bash
 git https://github.com/DanailZahariev/postman-homework.git
-cd postman-test
+cd postman-homework
 ```
 
 ### 2. Install Dependencies
