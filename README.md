@@ -29,7 +29,9 @@ It covers end-to-end user stories including:
 ### 1. Clone the Repository
 
 ```bash
-git https://github.com/DanailZahariev/postman-homework.git
+git clone https://github.com/DanailZahariev/postman-homework.git
+```
+```bash
 cd postman-homework
 ```
 
@@ -37,27 +39,26 @@ cd postman-homework
 
 ```bash
 npm install newman 
+```
+```bash
 npm install newman-reporter-html
 ```
 
 This installs `newman` and the `newman-reporter-html`.
 
-### 3. Configure Environment Variables
+### 3. Configure the Postman Environment
 
-Create a `.env` file by copying the example:
+Export your Postman environment to a file called `environment.json`.  
+Make sure it contains at least the following variables:
 
-```bash
-cp .env.example .env
+```json
+[
+  { "key": "github_token", "value": "your_token_here", "enabled": true },
+  { "key": "base_url", "value": "https://api.github.com", "enabled": true }
+]
 ```
 
-Then edit `.env` and provide your GitHub token:
-
-```env
-github_token=your_github_token_here
-base_url=https://api.github.com
-```
-
-> ❗ **Make sure your variable names match the lowercase format exactly**, as Postman uses `{{github_token}}` and `{{base_url}}`.
+> You can do this from **Postman → Environments → Export**
 
 ---
 
@@ -69,6 +70,7 @@ base_url=https://api.github.com
 
 This will:
 - Run all User Story requests via Newman
+- Use the `environment.json` file
 - Export a full HTML test report to `results.html`
 
 ---
@@ -111,14 +113,9 @@ start results.html
 
 ## 🔐 Providing Your GitHub Credentials
 
-You **only need your token** inside `.env`:
+You **only need to include your token** in the exported Postman environment file as `github_token`.
 
-```env
-github_token=ghp_xxxxxxxx...
-base_url=https://api.github.com
-```
-
-Your GitHub **username is auto-fetched** during test execution from the `/user` API.
+The GitHub **username is auto-fetched** during test execution from the `/user` API.
 
 ---
 
@@ -139,8 +136,8 @@ results.html
 | Problem                           | Solution                                                                 |
 |----------------------------------|--------------------------------------------------------------------------|
 | `401 Unauthorized`               | Check if your token is valid and has correct scopes                      |
-| `Bad credentials`                | Token is expired or not provided via `.env` or `run.sh`                  |
-| `getaddrinfo ENOTFOUND`          | Make sure `base_url` is defined in `.env`                                |
+| `Bad credentials`                | Token is expired or not provided in the environment file                 |
+| `getaddrinfo ENOTFOUND`          | Make sure `base_url` is defined in your environment file                 |
 | `newman: could not find reporter`| Run `npm install` to ensure dependencies are installed locally           |
 
 ---
